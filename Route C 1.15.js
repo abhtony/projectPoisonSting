@@ -20583,6 +20583,7 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 		
 		/*Init variables*/
 		data = [];
+		this.firstLoad = true;
 		
 		/*original block. Refer as example*/
 		//$(".btn1").click(function() {
@@ -20818,116 +20819,127 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 		this.consRecord("Location: Useful Links");
 		
 		
-		/*get csv*/
-		this.movieClip_27.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_33.bind(this));
-		
-		function fl_ClickToGoToAndPlayFromFrame_33()
-		{
-			this.consRecord("Clicked: download CSV");
-			this.saveCSV(data);
-		}
-		
-		
-		
-		/*link to ECHO*/
-		this.movieClip_18.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_17.bind(this));
-		
-		function fl_ClickToGoToAndPlayFromFrame_17()
-		{
-			this.consRecord("Clicked: Link to ECHO");
-			var tab = window.open('http://www.echo.ualberta.ca', '_blank');
-		}
+		if (this.firstLoad == true) {
+				/*get csv*/
+			this.movieClip_27.addEventListener("click", fl_MouseClickHandler.bind(this));
+			function fl_MouseClickHandler()
+			{
+				this.consRecord("Clicked: download CSV");
+				this.saveCSV(data);
+			}
 		
 		
-		/*link to trekk*/
-		this.movieClip_19.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_28.bind(this));
-		
-		function fl_ClickToGoToAndPlayFromFrame_28()
-		{
-			this.consRecord("Clicked: Link to TREKK");
-			console.log("trekk button pressed");
-			var tab = window.open('http://trekk.ca', '_blank');
-		}
+			/*this.movieClip_27.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_33.bind(this));
+			function fl_ClickToGoToAndPlayFromFrame_33()
+			{
+				this.consRecord("Clicked: download CSV");
+				this.saveCSV(data);
+			}
+			*/
 		
 		
+			/*link to ECHO*/
+			this.movieClip_18.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_17.bind(this));
 		
-		/*copy to clipboard snippet*/
-		function copyTextToClipboard(text) {
-		  var textArea = document.createElement("textarea");
-		
-		  //
-		  // *** This styling is an extra step which is likely not required. ***
-		  //
-		  // Why is it here? To ensure:
-		  // 1. the element is able to have focus and selection.
-		  // 2. if element was to flash render it has minimal visual impact.
-		  // 3. less flakyness with selection and copying which **might** occur if
-		  //    the textarea element is not visible.
-		  //
-		  // The likelihood is the element won't even render, not even a flash,
-		  // so some of these are just precautions. However in IE the element
-		  // is visible whilst the popup box asking the user for permission for
-		  // the web page to copy to the clipboard.
-		  //
-		
-		  // Place in top-left corner of screen regardless of scroll position.
-		  textArea.style.position = 'fixed';
-		  textArea.style.top = 0;
-		  textArea.style.left = 0;
-		
-		  // Ensure it has a small width and height. Setting to 1px / 1em
-		  // doesn't work as this gives a negative w/h on some browsers.
-		  textArea.style.width = '2em';
-		  textArea.style.height = '2em';
-		
-		  // We don't need padding, reducing the size if it does flash render.
-		  textArea.style.padding = 0;
-		
-		  // Clean up any borders.
-		  textArea.style.border = 'none';
-		  textArea.style.outline = 'none';
-		  textArea.style.boxShadow = 'none';
-		
-		  // Avoid flash of white box if rendered for any reason.
-		  textArea.style.background = 'transparent';
+			function fl_ClickToGoToAndPlayFromFrame_17()
+			{
+				this.consRecord("Clicked: Link to ECHO");
+				var tab = window.open('http://www.echo.ualberta.ca', '_blank');
+			}
 		
 		
-		  textArea.value = text;
+			/*link to trekk*/
+			this.movieClip_19.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_28.bind(this));
 		
-		  document.body.appendChild(textArea);
-		
-		  textArea.select();
-		
-		  try {
-		    var successful = document.execCommand('copy');
-		    var msg = successful ? 'successful' : 'unsuccessful';
-		    console.log('Copying text command was ' + msg);
-		  } catch (err) {
-		    console.log('Oops, unable to copy');
-		  }
-		
-		  document.body.removeChild(textArea);
-		}
-		
-		
-		/*Copy address itl*/
-		this.movieClip_20.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_27.bind(this));
-		
-		function fl_ClickToGoToAndPlayFromFrame_27()
-		{
-			this.consRecord("Clicked: Copy email address. Shouldn't work in iPad though");
-			copyTextToClipboard('itl@email.com');
-		}
+			function fl_ClickToGoToAndPlayFromFrame_28()
+			{
+				this.consRecord("Clicked: Link to TREKK");
+				var tab = window.open('http://trekk.ca', '_blank');
+			}
 		
 		
 		
-		/*back to home animation*/
-		this.movieClip_21.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_20.bind(this));
+			/*copy to clipboard snippet*/
+			function copyTextToClipboard(text) {
+			  var textArea = document.createElement("textarea");
 		
-		function fl_ClickToGoToAndPlayFromFrame_20()
-		{
-			this.consRecord("Clicked: Back to Home");
-			this.gotoAndPlay(285);
+			  //
+			  // *** This styling is an extra step which is likely not required. ***
+			  //
+			  // Why is it here? To ensure:
+			  // 1. the element is able to have focus and selection.
+			  // 2. if element was to flash render it has minimal visual impact.
+			  // 3. less flakyness with selection and copying which **might** occur if
+			  //    the textarea element is not visible.
+			  //
+			  // The likelihood is the element won't even render, not even a flash,
+			  // so some of these are just precautions. However in IE the element
+			  // is visible whilst the popup box asking the user for permission for
+			  // the web page to copy to the clipboard.
+			  //
+		
+			  // Place in top-left corner of screen regardless of scroll position.
+			  textArea.style.position = 'fixed';
+			  textArea.style.top = 0;
+			  textArea.style.left = 0;
+		
+			  // Ensure it has a small width and height. Setting to 1px / 1em
+			  // doesn't work as this gives a negative w/h on some browsers.
+			  textArea.style.width = '2em';
+			  textArea.style.height = '2em';
+		
+			  // We don't need padding, reducing the size if it does flash render.
+			  textArea.style.padding = 0;
+		
+			  // Clean up any borders.
+			  textArea.style.border = 'none';
+			  textArea.style.outline = 'none';
+			  textArea.style.boxShadow = 'none';
+		
+			  // Avoid flash of white box if rendered for any reason.
+			  textArea.style.background = 'transparent';
+		
+		
+			  textArea.value = text;
+		
+			  document.body.appendChild(textArea);
+		
+			  textArea.select();
+		
+			  try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				console.log('Copying text command was ' + msg);
+			  } catch (err) {
+				console.log('Oops, unable to copy');
+			  }
+		
+			  document.body.removeChild(textArea);
+			}
+		
+		
+			/*Copy address itl*/
+			this.movieClip_20.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_27.bind(this));
+		
+			function fl_ClickToGoToAndPlayFromFrame_27()
+			{
+				this.consRecord("Clicked: Copy email address. Shouldn't work in iPad though");
+				copyTextToClipboard('itl@email.com');
+			}
+		
+		
+		
+			/*back to home animation*/
+			this.movieClip_21.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_20.bind(this));
+		
+			function fl_ClickToGoToAndPlayFromFrame_20()
+			{
+				this.consRecord("Clicked: Back to Home");
+				this.gotoAndPlay(285);
+			}
+			
+			this.firstLoad = false;
+			console.log("the value of firstLoad: ",this.firstLoad);
 		}
 	}
 	this.frame_304 = function() {
@@ -21118,18 +21130,20 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 	this.timeline.addTween(cjs.Tween.get(this.movieClip_18).wait(259).to({_off:false},0).wait(1).to({regY:1.4,x:1111.4,y:200.8},0).wait(1).to({x:1071.3,y:200.6},0).wait(1).to({x:1015.6,y:200.3},0).wait(1).to({x:934.5,y:199.9},0).wait(1).to({x:830.5,y:199.4},0).wait(1).to({x:741.8,y:198.9},0).wait(1).to({x:680.5,y:198.6},0).wait(1).to({x:637.1,y:198.4},0).wait(1).to({x:604.6,y:198.2},0).wait(1).to({x:579.3,y:198.1},0).wait(1).to({x:559,y:198},0).wait(1).to({x:542.5,y:197.9},0).wait(1).to({x:528.9,y:197.8},0).wait(1).to({x:517.6},0).wait(1).to({x:508.2,y:197.7},0).wait(1).to({x:500.4},0).wait(1).to({x:493.9},0).wait(1).to({x:488.5,y:197.6},0).wait(1).to({x:484.2},0).wait(1).to({regY:0,x:480.8,y:196.2},0).wait(6).to({regY:1.4,x:519.7,y:197.6},0).wait(1).to({x:575.6},0).wait(1).to({x:662.9},0).wait(1).to({x:788.7},0).wait(1).to({x:893.9},0).wait(1).to({x:960.3},0).wait(1).to({x:1005},0).wait(1).to({x:1037.3},0).wait(1).to({x:1061.8},0).wait(1).to({x:1080.8},0).wait(1).to({x:1095.8},0).wait(1).to({x:1107.7},0).wait(1).to({x:1117.2},0).wait(1).to({x:1124.6},0).wait(1).to({x:1130.4},0).wait(1).to({x:1134.8},0).wait(1).to({x:1138},0).wait(1).to({x:1140.2},0).wait(1).to({x:1141.4},0).wait(1).to({regY:0,x:1141.8,y:196.2},0).wait(1));
 
 	// data_btn
+	this.movieClip_27 = new lib.Symbol27();
+	this.movieClip_27.parent = this;
+	this.movieClip_27.setTransform(988.6,693.6,1,1,0,0,0,0.1,0.1);
+	this.movieClip_27.alpha = 0.449;
+	this.movieClip_27._off = true;
+
 	this.instance_2 = new lib.dontclickbtn("synched",0);
 	this.instance_2.parent = this;
-	this.instance_2.setTransform(988.7,693.6,0.8,0.8,0,0,0,0.1,0.1);
+	this.instance_2.setTransform(300.7,693.6,0.8,0.8,0,0,0,0.1,0.1);
 	this.instance_2.alpha = 0.449;
 	this.instance_2._off = true;
 
-	this.movieClip_27 = new lib.Symbol27();
-	this.movieClip_27.parent = this;
-	this.movieClip_27.setTransform(300.6,693.5);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance_2}]},259).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.movieClip_27}]},1).to({state:[{t:this.instance_2}]},5).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_2}]},1).wait(1));
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(259).to({_off:false},0).wait(1).to({regX:0,regY:0.4,scaleX:0.81,scaleY:0.81,x:948.1,y:693.8,alpha:0.482},0).wait(1).to({scaleX:0.83,scaleY:0.83,x:889.8,alpha:0.528},0).wait(1).to({scaleX:0.86,scaleY:0.86,x:798.9,alpha:0.601},0).wait(1).to({scaleX:0.89,scaleY:0.89,x:668,alpha:0.706},0).wait(1).to({scaleX:0.93,scaleY:0.93,x:558.5,alpha:0.793},0).wait(1).to({scaleX:0.95,scaleY:0.95,x:489.4,alpha:0.849},0).wait(1).to({scaleX:0.96,scaleY:0.96,x:442.9,alpha:0.886},0).wait(1).to({scaleX:0.97,scaleY:0.97,x:409.2,alpha:0.913},0).wait(1).to({scaleX:0.98,scaleY:0.98,x:383.8,alpha:0.933},0).wait(1).to({scaleX:0.98,scaleY:0.98,x:364,alpha:0.949},0).wait(1).to({scaleX:0.99,scaleY:0.99,x:348.4,alpha:0.962},0).wait(1).to({scaleX:0.99,scaleY:0.99,x:336,alpha:0.972},0).wait(1).to({scaleX:0.99,scaleY:0.99,x:326.1,alpha:0.98},0).wait(1).to({scaleX:1,scaleY:1,x:318.4,alpha:0.986},0).wait(1).to({scaleX:1,scaleY:1,x:312.3,alpha:0.991},0).wait(1).to({scaleX:1,scaleY:1,x:307.7,alpha:0.994},0).wait(1).to({scaleX:1,scaleY:1,x:304.4,alpha:0.997},0).wait(1).to({scaleX:1,scaleY:1,x:302.2,alpha:0.999},0).wait(1).to({x:300.9,alpha:1},0).to({_off:true},1).wait(5).to({_off:false,regX:0.1,regY:0.1,scaleX:0.8,scaleY:0.8,x:300.7,y:693.6,alpha:0.449},0).wait(1).to({regX:0,regY:0.4,x:341.1,y:693.8},0).wait(1).to({x:399.3},0).wait(1).to({x:490.2},0).wait(1).to({x:621.1},0).wait(1).to({x:730.6},0).wait(1).to({x:799.7},0).wait(1).to({x:846.2},0).wait(1).to({x:879.9},0).wait(1).to({x:905.3},0).wait(1).to({x:925.1},0).wait(1).to({x:940.7},0).wait(1).to({x:953.1},0).wait(1).to({x:963},0).wait(1).to({x:970.7},0).wait(1).to({x:976.8},0).wait(1).to({x:981.4},0).wait(1).to({x:984.7},0).wait(1).to({x:986.9},0).wait(1).to({x:988.2},0).wait(1).to({regX:0.1,regY:0.1,x:988.7,y:693.6},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.movieClip_27).wait(259).to({_off:false},0).wait(1).to({regX:0,regY:0.3,x:948,y:693.8,alpha:0.482},0).wait(1).to({x:889.8,alpha:0.528},0).wait(1).to({x:798.9,alpha:0.601},0).wait(1).to({x:667.9,alpha:0.706},0).wait(1).to({x:558.5,y:693.7,alpha:0.793},0).wait(1).to({x:489.3,alpha:0.849},0).wait(1).to({x:442.8,alpha:0.886},0).wait(1).to({x:409.1,alpha:0.913},0).wait(1).to({x:383.7,alpha:0.933},0).wait(1).to({x:363.9,alpha:0.949},0).wait(1).to({x:348.3,alpha:0.962},0).wait(1).to({x:335.9,alpha:0.972},0).wait(1).to({x:326,alpha:0.98},0).wait(1).to({x:318.3,alpha:0.986},0).wait(1).to({x:312.2,alpha:0.991},0).wait(1).to({x:307.6,alpha:0.994},0).wait(1).to({x:304.3,alpha:0.997},0).wait(1).to({x:302.1,alpha:0.999},0).wait(1).to({x:300.8,alpha:1},0).wait(1).to({regY:0,x:300.6,y:693.5},0).to({_off:true},5).wait(21));
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(284).to({_off:false},0).wait(1).to({regX:0,regY:0.4,x:341.1,y:693.8},0).wait(1).to({x:399.3},0).wait(1).to({x:490.2},0).wait(1).to({x:621.1},0).wait(1).to({x:730.6},0).wait(1).to({x:799.7},0).wait(1).to({x:846.2},0).wait(1).to({x:879.9},0).wait(1).to({x:905.3},0).wait(1).to({x:925.1},0).wait(1).to({x:940.7},0).wait(1).to({x:953.1},0).wait(1).to({x:963},0).wait(1).to({x:970.7},0).wait(1).to({x:976.8},0).wait(1).to({x:981.4},0).wait(1).to({x:984.7},0).wait(1).to({x:986.9},0).wait(1).to({x:988.2},0).wait(1).to({regX:0.1,regY:0.1,x:988.7,y:693.6},0).wait(1));
 
 	// links_boxes_txts
 	this.instance_3 = new lib.Tween99("synched",0);
