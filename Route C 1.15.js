@@ -20558,9 +20558,18 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 
 	// timeline functions:
 	this.frame_0 = function() {
+		//quality of life things
+		var script = document.createElement('script');
+		script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js';
+		script.type = 'text/javascript';
+		document.getElementsByTagName('head')[0].appendChild(script);
+		
+		
+		
 		/*==========*/
 		/*Analytics*/
 		/*==========*/
+		
 		
 		/*This function gets the date for timestamps*/
 		this.getCurrentDate = function () {
@@ -20584,6 +20593,7 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 		/*Init variables*/
 		data = [];
 		this.firstLoad = true;
+		this.firstF1 = true;
 		
 		/*original block. Refer as example*/
 		//$(".btn1").click(function() {
@@ -20599,9 +20609,13 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 		/* inactive: This will trigger once when the thing loads*/
 		//this.consRecord("Location: Home");
 		
+		
+		
+		
+		
 		/*converts data array into csv output*/
 		this.saveCSV = function (data) {
-				console.log("this is data inside saveCSV: ",data);
+			console.log("this is data inside saveCSV: ",data);
 			var csvContent = "data:text/csv;charset=utf-8,";
 			data.forEach(function(infoArray, index){
 			
@@ -20620,19 +20634,43 @@ p.nominalBounds = new cjs.Rectangle(-32.2,-32.2,64.6,64.6);
 			var link = document.createElement("a");
 			link.setAttribute("href", encodedUri);
 			link.setAttribute("download", "my_data.csv");
-			document.body.appendChild(link); // Required for FF
-			
-			link.click(); // This will download the data file named "my_data.csv".
-		}
+			//document.body.appendChild(link); // Required for FF
 		
-		/* testing out calling function from another frame
-		//Function definition
-		this.sampleFunction1 = function() { 
-		  console.log("sampleFunction1 has been triggered");
+			//link.click(); // This will download the data file named "my_data.csv".
+			
+			/*this is the ninjaform*/
+			var f = document.createElement("form");
+			f.setAttribute('method',"post");
+			f.setAttribute('action',"https://script.google.com/macros/s/AKfycbzqw6-nu0TFo3nRi5pkl53vqPjUY5mYxcLPva1ERqh1L_1AYwzK/exec");
+			//f.setAttribute('id',"gform");
+			//f.setAttribute('target',"_blank");
+			f.setAttribute('id',"ninjaForm");
+			f.setAttribute('ajax',"true");
+			
+			console.log("this is right after var f has been defined");
+		
+			var i = document.createElement("input"); //input element, text
+			i.setAttribute('type',"text");
+			i.setAttribute('name',"userData");
+			i.setAttribute('id',"ninjaFormText");
+		
+			var s = document.createElement("button"); //input element, Submit button
+			s.setAttribute('type',"submit");
+			//s.setAttribute('value',"Submit");
+		
+			f.appendChild(i);
+			f.appendChild(s);
+			
+			console.log("this is var f: ",f);
+		
+			document.getElementsByTagName('body')[0].appendChild(f);
+			document.getElementById('ninjaFormText').value = csvContent;
+			$("#ninjaForm").hide();
+			
+			
+			$.post( "https://script.google.com/macros/s/AKfycbzqw6-nu0TFo3nRi5pkl53vqPjUY5mYxcLPva1ERqh1L_1AYwzK/exec", $("#ninjaForm").serialize() );
+			alert("sent to email");
 		}
-		//Function call - from any frame
-		this.sampleFunction1();
-		 */
 		
 		
 		
